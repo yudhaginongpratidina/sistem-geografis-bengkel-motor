@@ -1,54 +1,50 @@
+"use client"
 import MapLeaflet from "@/components/map-leafleat"
 import HorizontalListMapView from "./horizontal-list-map";
 import Link from "next/link";
 import { FaArrowRightLong } from "react-icons/fa6";
 
+import { useEffect, useState } from "react";
+
+
+type modelCategory = {
+    name : string
+}
+
+type modelBengkel = {
+    id: number
+    name: string
+    buka : string
+    category:  modelCategory
+    latitude: number
+    longitude: number
+}
+
 export default function MapHomePageView(){
 
-    const data = [
-        {
-            id: 1,
-            name: "Bengkel 1",
-            category_bengkel: "Yamaha",
-            latitude: -8.098639089698542,
-            longitude: 112.16270366674483
-        },
-        {
-            id: 2,
-            name : "Bengkel 2",
-            category_bengkel: "Yamaha",
-            latitude: -8.094326000773586, 
-            longitude: 112.16927253183778
-        },
-        {
-            id: 3,
-            name : "Bengkel 2",
-            category_bengkel: "Yamaha",
-            latitude: -8.094326000773586, 
-            longitude: 112.16927253183778
-        },
-        {
-            id: 4,
-            name : "Bengkel 2",
-            category_bengkel: "Yamaha",
-            latitude: -8.094326000773586, 
-            longitude: 112.16927253183778
-        },
-        {
-            id: 5,
-            name : "Bengkel 2",
-            category_bengkel: "Yamaha",
-            latitude: -8.094326000773586, 
-            longitude: 112.16927253183778
-        },
-        {
-            id: 6,
-            name : "Bengkel 2",
-            category_bengkel: "Honda",
-            latitude: -8.094326000773586, 
-            longitude: 112.16927253183778
-        },
-    ]
+    const [bengkels, setBengkels] = useState<modelBengkel[]>([]);
+
+    const getBengkels = async () => {
+        try {
+            const response = await fetch("http://localhost:3000/api/bengkel")
+            const { data } = await response.json()
+            setBengkels(data)
+
+            // -------------------------------------------------------------------------
+            // debug
+            // -------------------------------------------------------------------------
+            // console.table(data)
+            // console.log(data)
+            // -------------------------------------------------------------------------
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+        getBengkels()
+    }, [])
+
 
     return (
         <div className="py-8 flex flex-col justify-center items-center">
@@ -57,10 +53,10 @@ export default function MapHomePageView(){
                 <h2 className="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, nulla?</h2>
             </div>
             <div className="container">
-                <MapLeaflet api={data} />
+                <MapLeaflet api={bengkels} />
             </div>
-            <div className="w-full max-w-screen-xl container grid grid-cols-3 gap-6 py-6">
-                <HorizontalListMapView api={data} />
+            <div className="w-full max-w-screen-lg container flex flex-col gap-6 py-6">
+                <HorizontalListMapView api={bengkels} />
             </div>
             <div className="py-4">
                 <Link href={"/"} className="text-orange-500 font-bold py-4 px-6 bg-slate-950 hover:bg-orange-500 hover:text-white duration-200 rounded flex gap-4 items-center">

@@ -1,6 +1,40 @@
+"use client"
 import Link from "next/link"
+import { useEffect, useState } from "react"
 
 export default function Page() {
+
+    type modelBengkel = {
+        id : number
+        name : string
+        alamat : string
+        buka : string
+        telp : string
+        latitude : string
+        longitude : string
+    }
+
+    const [bengkels, setBengkels] = useState<modelBengkel[]>([]);
+
+    const getBengkels = async () => {
+        try {
+            const response = await fetch("http://localhost:3000/api/bengkel")
+            const { data } = await response.json()
+            setBengkels(data)
+
+            // -------------------------------------------------------------------------
+            // debug
+            // -------------------------------------------------------------------------
+            // console.table(data)
+            // -------------------------------------------------------------------------
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+        getBengkels()
+    }, [])
     return (
         <>
             <div className="w-full py-6 flex justify-between items-center">
@@ -12,7 +46,6 @@ export default function Page() {
                     <tr className="overflow-x-auto">
                         <th className="py-2 border uppercase w-[60px]">no</th>
                         <th className="px-4 py-2 border uppercase text-start w-[250px]">nama</th>
-                        <th className="px-4 py-2 border uppercase text-start w-[100px]">alamat</th>
                         <th className="px-4 py-2 border uppercase text-start">buka</th>
                         <th className="px-4 py-2 border uppercase text-start w-[200px]">no telp</th>
                         <th className="px-4 py-2 border uppercase text-start">kordinat</th>
@@ -20,24 +53,21 @@ export default function Page() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td className="py-2 border text-center">1</td>
-                        <td className="px-4 py-2 border">Yamaha Cabang 1</td>
-                        <td className="px-4 py-2 border">Jl. Cemara No.242, Tlumpu, Kec. Sukorejo</td>
-                        <td className="px-4 py-2 border">
-                            senin - jumat pukul 08.00 - 16.00
-                        </td>
-                        <td className="px-4 py-2 border">
-                            0822-3258-9629
-                        </td>
-                        <td className="px-4 py-2 border">
-                            -8.07934299431961, 112.17844952693889
-                        </td>
-                        <td className="px-4 border">
-                            <Link href={"/dashboard/bengkel/edit/10"} className="py-2 px-4 bg-orange-500 text-white font-medium hover:font-bold hover:bg-orange-600 duration-200 mr-2">Edit</Link>
-                            <Link href={"/dashboard/bengkel/delete/10"} className="py-2 px-4 bg-red-500 text-white font-medium hover:font-bold hover:bg-red-600 duration-200">Delete</Link>
-                        </td>
-                    </tr>
+                    {
+                        bengkels.map((bengkel, index) => (
+                            <tr key={index}>
+                                <td className="py-2 border text-center">{index + 1}</td>
+                                <td className="px-4 py-2 border capitalize">{bengkel.name}</td>
+                                <td className="px-4 py-2 border capitalize">{bengkel.buka}</td>
+                                <td className="px-4 py-2 border capitalize">{bengkel.telp}</td>
+                                <td className="px-4 py-2 border capitalize">{bengkel.latitude}, {bengkel.longitude}</td>
+                                <td className="px-4 py-2 border">
+                                    <Link href={`/dashboard/bengkel/edit/${bengkel.id}`} className="py-2 px-7 bg-orange-500 text-white font-medium hover:font-bold hover:bg-orange-600 duration-200 mr-2">Edit</Link>
+                                    <Link href={`/dashboard/bengkel/delete/${bengkel.id}`} className="py-2 px-7 bg-red-500 text-white font-medium hover:font-bold hover:bg-red-600 duration-200">Hapus</Link>
+                                </td>
+                            </tr>
+                        ))
+                    }
                 </tbody>
             </table>
         </>
