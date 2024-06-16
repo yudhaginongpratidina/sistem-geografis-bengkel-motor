@@ -2,27 +2,88 @@
 import Link from "next/link"
 import TextField from "@/components/text-field"
 import Button from "@/components/button"
+import Swal from 'sweetalert2'
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 export default function Page({ params }: { params: { id: number } }) {
 
     const { id } = params
     const [name, setName] = useState("")
-    // console.log(id)
+    
+
+    const getCategoriesById = async () => {
+        try {
+            const response = await fetch(`http://localhost:3000/api/category?id=${id}`)
+            const data = await response.json()
+            // setName(data[0].name);
+            // console.log(data.data[0].name) 
+            setName(data.data[0].name)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const updateCategoriesById = async (e : any) => {
+        e.preventDefault()
+        try {
+            const response = await fetch(`http://localhost:3000/api/category?id=${id}`, {
+                method : "PATCH",
+                headers : {
+                    "Content-Type" : "application/json"
+                },
+                body : JSON.stringify({
+                    name
+                })
+            })
+
+            const data = await response.json()
+            // console.log(data)
+
+            if (data.status === 400) {
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: data.message,
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+
+            if (data.status === 200) {
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: data.message,
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+
+            setInterval(() => {
+                window.location.href = "/dashboard/category"
+            }, 2000)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+        getCategoriesById()
+    }, [])
     
 
     return (
         <>
             <div className="w-full py-6 flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold uppercase">edit data kategori : {id}</h1>
+                    <h1 className="text-3xl font-bold uppercase">edit data kategori</h1>
                     <h2 className="text-lg">Silahkan isi form dibawah ini</h2>
                 </div>
                 <Link href={"/dashboard/category"} className="py-2 px-4 bg-slate-900 text-orange-500 font-medium hover:font-bold hover:bg-slate-800 duration-200">Kembali</Link>
             </div>
             <div className="w-full">
-                <form action="" className="flex flex-col gap-1.5">
+                <form onSubmit={updateCategoriesById} className="flex flex-col gap-1.5">
                     <TextField 
                         id={"name"} 
                         label={true} 

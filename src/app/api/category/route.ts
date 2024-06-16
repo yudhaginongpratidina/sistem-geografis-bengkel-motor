@@ -118,10 +118,15 @@ export async function DELETE(request: Request) {
         const url = new URL(request.url);
         const id = url.searchParams.get("id");
 
+        const response = await prisma.category.delete({
+            where : {
+                id : Number(id)
+            }
+        })
         return Response.json({ 
             status : 200,
-            message : "Success",
-            data : id
+            message : "Deleted Success",
+            data : response
          })
     } catch (error) {
         console.log(error);

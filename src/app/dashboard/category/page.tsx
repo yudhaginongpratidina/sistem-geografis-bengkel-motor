@@ -1,6 +1,37 @@
+"use client"
+
 import Link from "next/link"
+import { useEffect, useState } from "react"
 
 export default function Page() {
+
+    type modelCategory = {
+        id : number
+        name : string
+    }
+
+    const [categories, setCategories] = useState<modelCategory[]>([]);
+
+    const getCategories = async () => {
+        try {
+            const response = await fetch("http://localhost:3000/api/category")
+            const { data } = await response.json()
+            setCategories(data)
+
+            // -------------------------------------------------------------------------
+            // debug
+            // -------------------------------------------------------------------------
+            // console.table(data)
+            // -------------------------------------------------------------------------
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+        getCategories()
+    }, [])
+
     return (
         <>
             <div className="w-full py-6 flex justify-between items-center mb-6">
@@ -16,14 +47,18 @@ export default function Page() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td className="py-2 border text-center">1</td>
-                        <td className="px-4 py-2 border">Yamaha</td>
-                        <td className="px-4 py-2 border text-center flex justify-center items-center gap-2.5">
-                            <Link href={"/dashboard/category/edit/10"} className="py-2 px-7 bg-orange-500 text-white font-medium hover:font-bold hover:bg-orange-600 duration-200">Edit</Link>
-                            <Link href={"/dashboard/category/delete/10"} className="py-2 px-7 bg-red-500 text-white font-medium hover:font-bold hover:bg-red-600 duration-200">Hapus</Link>
-                        </td>
-                    </tr>
+                    {
+                        categories.map((category, index) => (
+                            <tr key={index}>
+                                <td className="py-2 border text-center">{index + 1}</td>
+                                <td className="px-4 py-2 border capitalize">{category.name}</td>
+                                <td className="px-4 py-2 border text-center flex justify-center items-center gap-2.5">
+                                    <Link href={`/dashboard/category/edit/${category.id}`} className="py-2 px-7 bg-orange-500 text-white font-medium hover:font-bold hover:bg-orange-600 duration-200">Edit</Link>
+                                    <Link href={`/dashboard/category/delete/${category.id}`} className="py-2 px-7 bg-red-500 text-white font-medium hover:font-bold hover:bg-red-600 duration-200">Hapus</Link>
+                                </td>
+                            </tr>
+                        ))
+                    }
                 </tbody>
             </table>
         </>
