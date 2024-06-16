@@ -16,7 +16,7 @@ export default function Page({ params }: { params: { id: number } }) {
         <>
             <div className="w-full py-6 flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold uppercase">tambah data kategori : {id}</h1>
+                    <h1 className="text-3xl font-bold uppercase">edit data kategori : {id}</h1>
                     <h2 className="text-lg">Silahkan isi form dibawah ini</h2>
                 </div>
                 <Link href={"/dashboard/category"} className="py-2 px-4 bg-slate-900 text-orange-500 font-medium hover:font-bold hover:bg-slate-800 duration-200">Kembali</Link>
@@ -34,7 +34,7 @@ export default function Page({ params }: { params: { id: number } }) {
                         required={true}
                     />
                     <Button 
-                        name={"Tambah"} 
+                        name={"Edit"} 
                         type={"submit"}
                         className="bg-orange-500 hover:bg-orange-600 text-white"
                     />

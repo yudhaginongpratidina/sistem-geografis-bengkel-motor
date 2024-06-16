@@ -5,7 +5,7 @@ export default function Page() {
         <>
             <div className="w-full py-6 flex justify-between items-center">
                 <h1 className="text-3xl font-bold uppercase mb-6">data bengkel</h1>
-                <Link href={"/"} className="py-2 px-4 bg-slate-900 text-orange-500 font-medium hover:font-bold hover:bg-slate-800 duration-200">Tambah Data Bengkel</Link>
+                <Link href={"/dashboard/bengkel/create"} className="py-2 px-4 bg-slate-900 text-orange-500 font-medium hover:font-bold hover:bg-slate-800 duration-200">Tambah Data Bengkel</Link>
             </div>
             <table className="w-full select-none overflow-x-auto">
                 <thead>
@@ -34,8 +34,8 @@ export default function Page() {
                             -8.07934299431961, 112.17844952693889
                         </td>
                         <td className="px-4 border">
-                            <Link href={"/"} className="py-2 px-4 bg-orange-500 text-white font-medium hover:font-bold hover:bg-orange-600 duration-200">Edit</Link>
-                            <button className="py-2 px-4 bg-red-500 text-white font-medium hover:font-bold hover:bg-red-700 duration-200">Delete</button>
+                            <Link href={"/dashboard/bengkel/edit/10"} className="py-2 px-4 bg-orange-500 text-white font-medium hover:font-bold hover:bg-orange-600 duration-200 mr-2">Edit</Link>
+                            <Link href={"/dashboard/bengkel/delete/10"} className="py-2 px-4 bg-red-500 text-white font-medium hover:font-bold hover:bg-red-600 duration-200">Delete</Link>
                         </td>
                     </tr>
                 </tbody>
