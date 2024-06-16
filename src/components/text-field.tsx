@@ -5,18 +5,19 @@ type TextFieldProps = {
     type : "text" | "password" | "email" | "number",
     placeholder : string,
     value : string
-    required : boolean
+    required : boolean,
+    className? : string
     onChange? : React.ChangeEventHandler<HTMLInputElement>
 }
 
 export default function TextField(props: TextFieldProps) {
-    const { id, label, name, type, placeholder, value, required, onChange } = props
+    const { id, label, name, type, placeholder, value, required, className, onChange } = props
     return (
         <div className="w-full flex flex-col gap-0.5 mb-4">
             {label &&
                 <label 
                 htmlFor={id}
-                className="text-sm font-medium capitalize"
+                className={`text-sm font-medium capitalize ${className}`}
             >{name}</label>
             }
             <input 
@@ -27,7 +28,7 @@ export default function TextField(props: TextFieldProps) {
                 value={value} 
                 required ={required}
                 onChange={onChange} 
-                className="w-full p-2 border outline-none focus:border-blue-500" 
+                className={`w-full p-2 border outline-none ${className}`} 
             />
         </div>
     )

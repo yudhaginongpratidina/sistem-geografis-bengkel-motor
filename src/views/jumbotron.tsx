@@ -10,7 +10,7 @@ export default function JumbotronView(){
                     </div>
 
                     <div className="flex gap-6">
-                        <Link href={"/"} className="py-3 px-6 bg-orange-500 text-white font-semibold rounded">Login</Link>
+                        <Link href={"/auth"} className="py-3 px-6 bg-orange-500 text-white font-semibold rounded">Login</Link>
                         <Link href={"/"} className="py-3 px-6 bg-white text-orange-500 font-semibold rounded">Search</Link>
                     </div>
                 </div>
