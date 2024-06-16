@@ -10,7 +10,7 @@ export default function Page() {
                     </div>
                     <div className="flex flex-col justify-center h-[75px] px-4">
                         <h1 className="text-xl font-medium uppercase">User</h1>
-                        <Link href={"/"} className="text-orange-500 hover:underline hover:underline-offset-4">Lihat Selengkapnya</Link>
+                        <Link href={"/dashboard/user"} className="text-orange-500 hover:underline hover:underline-offset-4">Lihat Selengkapnya</Link>
                     </div>
                 </div>
                 <div className="w-full shadow-md drop-shadow-md">
@@ -19,7 +19,7 @@ export default function Page() {
                     </div>
                     <div className="flex flex-col justify-center h-[75px] px-4">
                         <h1 className="text-xl font-medium uppercase">Kategori Bengkel</h1>
-                        <Link href={"/"} className="text-orange-500 hover:underline hover:underline-offset-4">Lihat Selengkapnya</Link>
+                        <Link href={"/dashboard/category"} className="text-orange-500 hover:underline hover:underline-offset-4">Lihat Selengkapnya</Link>
                     </div>
                 </div>
                 <div className="w-full shadow-md drop-shadow-md">
@@ -28,7 +28,7 @@ export default function Page() {
                     </div>
                     <div className="flex flex-col justify-center h-[75px] px-4">
                         <h1 className="text-xl font-medium uppercase">Bengkel</h1>
-                        <Link href={"/"} className="text-orange-500 hover:underline hover:underline-offset-4">Lihat Selengkapnya</Link>
+                        <Link href={"/dashboard/bengkel"} className="text-orange-500 hover:underline hover:underline-offset-4">Lihat Selengkapnya</Link>
                     </div>
                 </div>
             </div>
