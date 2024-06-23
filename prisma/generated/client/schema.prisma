@@ -1,0 +1,40 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+// datasource db {
+//   provider = "mysql"
+//   url      = env("DATABASE_URL")
+// }
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Category {
+  id       Int       @id @default(autoincrement())
+  name     String
+  bengkels Bengkel[]
+}
+
+model Bengkel {
+  id         Int      @id @default(autoincrement())
+  name       String
+  categoryId Int
+  alamat     String   @db.VarChar(255)
+  buka       String   @db.VarChar(255)
+  telp       String   @db.VarChar(255)
+  latitude   String
+  longitude  String
+  category   Category @relation(fields: [categoryId], references: [id])
+}
+
+model Activity {
+  id          Int    @id @default(autoincrement())
+  name        String
+  description String
+
+  createdAt DateTime @default(now())
+}
