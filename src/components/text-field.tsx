@@ -13,7 +13,7 @@ type TextFieldProps = {
 export default function TextField(props: TextFieldProps) {
     const { id, label, name, type, placeholder, value, required, className, onChange } = props
     return (
-        <div className="w-full flex flex-col gap-0.5 mb-4">
+        <div className="w-full flex flex-col gap-0.5">
             {label &&
                 <label 
                 htmlFor={id}

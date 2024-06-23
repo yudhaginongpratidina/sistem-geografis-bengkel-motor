@@ -59,7 +59,7 @@ export default function MapHomePageView(){
                 <HorizontalListMapView api={bengkels} />
             </div>
             <div className="py-4">
-                <Link href={"/"} className="text-orange-500 font-bold py-4 px-6 bg-slate-950 hover:bg-orange-500 hover:text-white duration-200 rounded flex gap-4 items-center">
+                <Link href={"/more"} className="text-orange-500 font-bold py-4 px-6 bg-slate-950 hover:bg-orange-500 hover:text-white duration-200 rounded flex gap-4 items-center">
                     <span className="animate-pulse">Tampilkan Lebih Banyak</span>
                     <FaArrowRightLong className="w-6 h-6 animate-pulse" />
                 </Link>

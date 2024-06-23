@@ -5,6 +5,7 @@ type modelCategory = {
     name : string
 }
 
+
 export async function GET(request: Request) {
     try {
         const response = await prisma.category.findMany();
@@ -53,11 +54,28 @@ export async function PATCH(request: Request) {
         })
 
         if (findSameCategory) {
+
+            await prisma.activity.create({
+                data  : {
+                    name : "error",
+                    description : `Sorry, category ${name} already exists`
+                }
+            })
+
             return Response.json({
                 status : 400,
                 message : `Data ${name} already exists`,
             })
         }
+
+
+        await prisma.activity.create({
+            data  : {
+                name : "update",
+                description : `Successfully update category ${name}`
+            }
+        })
+
 
         const response = await prisma.category.update({
             where : {
@@ -90,13 +108,25 @@ export async function POST(request: Request) {
         })
 
         if (findSameCategory) {
+            await prisma.activity.create({
+                data  : {
+                    name : "error",
+                    description : `Sorry, category ${name} already exists`
+                }
+            })
+
             return Response.json({
                 status : 400,
                 message : `Data ${name} already exists`,
             })
         }
 
-
+        await prisma.activity.create({
+            data  : {
+                name : "create",
+                description : `Successfully create category ${name}`
+            }
+        })
         const response = await prisma.category.create({
             data : {
                 name : name
@@ -121,6 +151,13 @@ export async function DELETE(request: Request) {
         const response = await prisma.category.delete({
             where : {
                 id : Number(id)
+            }
+        })
+
+        await prisma.activity.create({
+            data  : {
+                name : "delete",
+                description : `Successfully delete category with id ${id}`
             }
         })
         return Response.json({ 

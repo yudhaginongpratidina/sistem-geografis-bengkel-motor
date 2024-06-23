@@ -40,6 +40,12 @@ export async function GET(request: Request) {
 
 
         if (response.length === 0) {
+            await prisma.activity.create({
+                data  : {
+                    name : "error",
+                    description : `Maaf, data bengkel masih kosong`,
+                }
+            })
             return Response.json({
                 status: 200,
                 message: "Data belum ada",
@@ -79,6 +85,12 @@ export async function POST(request: Request) {
         })
 
         if (findSameBengkel) {
+            await prisma.activity.create({
+                data  : {
+                    name : "error",
+                    description : `maaf, bengkel ${name} sudah ada`,
+                }
+            })
             return Response.json({
                 status: 400,
                 message: `Data ${name} already exists`,
@@ -95,6 +107,13 @@ export async function POST(request: Request) {
                 telp: telp,
                 latitude: latitude,
                 longitude: longitude
+            }
+        })
+
+        await prisma.activity.create({
+            data  : {
+                name : "create",
+                description : `Successfully create bengkel ${name}`
             }
         })
 
@@ -129,6 +148,13 @@ export async function PATCH(request: Request) {
             }
         })
 
+        await prisma.activity.create({
+            data  : {
+                name : "update",
+                description : `Successfully update bengkel ${name}`
+            }
+        })
+
         return Response.json({
             status: 200,
             message: "Updated Success",
@@ -151,6 +177,13 @@ export async function DELETE(request: Request) {
             }
         })
 
+        await prisma.activity.create({
+            data  : {
+                name : "delete",
+                description : `Successfully delete bengkel with id ${id}`
+            }
+        })
+        
         return Response.json({
             status: 200,
             message: "Deleted Success",
