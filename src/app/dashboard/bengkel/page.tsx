@@ -54,7 +54,7 @@ export default function Page() {
                 </thead>
                 <tbody>
                     {
-                        bengkels.map((bengkel, index) => (
+                        bengkels?.map((bengkel, index) => (
                             <tr key={index}>
                                 <td className="py-2 border text-center">{index + 1}</td>
                                 <td className="px-4 py-2 border capitalize">{bengkel.name}</td>

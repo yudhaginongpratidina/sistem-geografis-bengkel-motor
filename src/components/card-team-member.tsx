@@ -16,13 +16,13 @@ export default function CardTeamMember(props : cardTeamMemberProps) {
     const { name, jobdesk, nim, image, linkedIn, gitHub } = props
     return (
         <>
-            <div className="w-full rounded-md shadow-md drop-shadow-md hover:shadow-lg hover:drop-shadow-lg hover:bg-slate-950 hover:text-white duration-200">
+            <div className="w-full border rounded-md shadow-md drop-shadow-md hover:shadow-lg hover:drop-shadow-lg hover:bg-slate-950 hover:text-white duration-200">
                 <Image 
                     src={image}
                     alt={name} 
                     width={300} 
                     height={300}
-                    className="w-full"
+                    className="w-full h-[250px] object-cover"
                 />
                 <div className="p-4 flex flex-col gap-0.5">
                     <h1 className="text-center text-lg font-bold">{name}</h1>

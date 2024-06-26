@@ -3,6 +3,9 @@ import MapLeaflet from "@/components/map-leafleat"
 import Link from "next/link";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { useEffect, useState } from "react";
+import MapLeafletFullSize from "@/components/map-leafleat-fullsize";
+import NavbarView from "@/views/navbar";
+import FooterView from "@/views/footer";
 
 
 type modelCategory = {
@@ -49,20 +52,17 @@ export default function MapMoreView(){
 
 
     return (
-        <div className="py-8 flex flex-col justify-center items-center">
-            <div className="py-6">
-                <h1 className="text-4xl uppercase text-center">SEMUA DATA BENGKEL MOTOR SE WILAYAH BLITAR</h1>
-                <h2 className="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, nulla?</h2>
-            </div>
-            <div className="container">
-                <MapLeaflet api={bengkels} />
-                <Link href={"/more/fullsize"} >
-                    <button className="w-full py-2 bg-orange-500 text-white font-semibold">View Map</button>
-                </Link>
-            </div>
-
-
-            <div className="w-full max-w-screen-lg container flex flex-col gap-6 py-6">
+        <>
+            <NavbarView/>
+            <div className="py-2 flex flex-col justify-center items-center">
+                <div className="py-6">
+                    <h1 className="text-4xl uppercase text-center">SEMUA DATA BENGKEL MOTOR SE WILAYAH BLITAR</h1>
+                    <h2 className="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, nulla?</h2>
+                </div>
+                <div className="w-full">
+                    <MapLeafletFullSize api={bengkels} />
+                </div>
+                <div className="w-full grid grid-cols-3 gap-6 py-6 px-5">
                 {bengkels.map((item: modelBengkel) => (
                     <Link href={`/more/detail/${item.id}`} key={item.id}>
                         <div className="flex items-center shadow-md drop-shadow-md border gap-2.5 h-[120px]">
@@ -80,6 +80,8 @@ export default function MapMoreView(){
                     </Link>
                 ))}
             </div>
-        </div>
+            </div>
+            <FooterView/>
+        </>
     )
 }

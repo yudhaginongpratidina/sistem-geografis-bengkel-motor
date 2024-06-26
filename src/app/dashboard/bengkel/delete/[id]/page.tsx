@@ -52,7 +52,7 @@ export default function Page({ params }: { params: { id: number } }) {
     }, [])
     return (
         <>
-            <div className="w-full h-[100px] shadow-md drop-shadow-md flex flex-col justify-center px-6 py-2 border">
+            <div className="w-full h-[200px] shadow-md drop-shadow-md flex flex-col justify-center px-6 py-2 border">
                 <h1 className="text-2xl font-medium mb-4">Apakah anda yakin ingin menghapus data bengkel <span className="font-bold text-red-500 uppercase">{name}</span> ?</h1>
                 <div className="flex gap-2.5 items-center">
                     <button onClick={deleteBengkelById} className="py-2 px-4 bg-red-500 text-white font-medium hover:font-bold hover:bg-red-600 duration-200">Ya, Saya Yakin</button>

@@ -21,9 +21,9 @@ export default function JumbotronView() {
                     </div>
 
                     <div className="flex justify-center gap-6 w-full max-w-screen-md">
-                        <button className="py-3 px-6 bg-orange-500 text-white font-semibold rounded transition-all duration-1000">
+                        <Link href={"/more"} className="py-3 px-6 bg-orange-500 text-white font-semibold rounded transition-all duration-1000">
                             Tampilkan Data Persebaran Bengkel
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>

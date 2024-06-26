@@ -24,7 +24,7 @@ const markerIcon = (): L.DivIcon => {
     });
 };
 
-const MapLeaflet: React.FC<{ api?: ApiItem[] }> = ({ api }) => {
+const MapLeafletFullSize: React.FC<{ api?: ApiItem[] }> = ({ api }) => {
     const [currentPosition, setCurrentPosition] = useState<[number, number]>([-8.096609315101846, 112.16491235543377]);
     const [selectedLayer, setSelectedLayer] = useState<string>("osm");
 
@@ -48,7 +48,7 @@ const MapLeaflet: React.FC<{ api?: ApiItem[] }> = ({ api }) => {
 
     return (
         <div>
-            <MapContainer center={currentPosition} zoom={12.5} scrollWheelZoom={false} style={{ width: '100%', height: '500px' }}>
+            <MapContainer center={currentPosition} zoom={12.5} scrollWheelZoom={false} style={{ width: '100%', height: '100vh' }}>
                 <LayersControl position="topright">
                     <LayersControl.BaseLayer checked={selectedLayer === "osm"} name="OpenStreetMap">
                         <TileLayer url={layerOptions.osm.url} />
@@ -68,7 +68,7 @@ const MapLeaflet: React.FC<{ api?: ApiItem[] }> = ({ api }) => {
                                     <MdLocationOn  className="text-orange-500 h-12 w-12"/>
                                 </div>
                                 <div className="flex justify-center py-4">
-                                    <h1 className="text-lg uppercase text-center">{item.name}</h1>
+                                    <h1 className="text-lg uppercase">{item.name}</h1>
                                 </div>
                                 <div className="w-full flex flex-col justify-center items-center  gap-0.5 py-4">
                                     <span className="text-orange-500"> Latitude {item.latitude}</span>
@@ -83,4 +83,4 @@ const MapLeaflet: React.FC<{ api?: ApiItem[] }> = ({ api }) => {
     );
 };
 
-export default MapLeaflet;
+export default MapLeafletFullSize;

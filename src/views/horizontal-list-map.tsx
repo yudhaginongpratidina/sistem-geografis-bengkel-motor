@@ -26,7 +26,7 @@ export default function HorizontalListMapView({ api }: typeApiProps) {
     return (
         <>
             {limitedApi.map((item: ApiItem) => (
-                <Link href={`/bengkel/${item.id}`} key={item.id}>
+                <Link href={`/more/detail/${item.id}`} key={item.id}>
                     <div className="flex items-center shadow-md drop-shadow-md border gap-2.5 h-[120px]">
                         <div className="w-[120px] h-full bg-slate-950 flex justify-center items-center">
                             <FaMapMarkerAlt className="w-16 h-16 text-orange-500" />

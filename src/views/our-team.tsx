@@ -8,7 +8,7 @@ export default function OurTeamView(){
             </div>
             <div className="w-full container grid grid-cols-5 gap-6">
                 <CardTeamMember 
-                    image={"https://pbs.twimg.com/media/FzMtX-7WcAIeOoG?format=jpg&name=4096x4096"} 
+                    image={"https://pics.craiyon.com/2023-09-29/66835b86df2f40f685875123a808a4a5.webp"} 
                     name={"Yudha Ginong Pratidina"} 
                     nim={21104410001}
                     jobdesk={"Fullstack"} 
@@ -16,7 +16,7 @@ export default function OurTeamView(){
                     gitHub={"http://"}
                 />
                 <CardTeamMember 
-                    image={"https://pbs.twimg.com/media/FzMtX-7WcAIeOoG?format=jpg&name=4096x4096"} 
+                    image={"https://i.pinimg.com/736x/08/ae/03/08ae032a381d069d39231f3a719ef435.jpg"} 
                     name={"Yoan Ockta Pradana"} 
                     nim={21104410011}
                     jobdesk={"Data Entry"} 
@@ -24,7 +24,7 @@ export default function OurTeamView(){
                     gitHub={"http://"}
                 />
                 <CardTeamMember 
-                    image={"https://pbs.twimg.com/media/FzMtX-7WcAIeOoG?format=jpg&name=4096x4096"} 
+                    image={"https://e1.pxfuel.com/desktop-wallpaper/97/962/desktop-wallpaper-cute-chibi-anime-anime-cute-characters.jpg"} 
                     name={"Asfin Rizaldy"} 
                     nim={21104410028}
                     jobdesk={"Front End"} 
@@ -32,7 +32,7 @@ export default function OurTeamView(){
                     gitHub={"http://"}
                 />
                 <CardTeamMember 
-                    image={"https://pbs.twimg.com/media/FzMtX-7WcAIeOoG?format=jpg&name=4096x4096"} 
+                    image={"https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/280716472/original/c0faa2b08f53a57e20c83d7b58d546808e76b3be/draw-smoll-super-cute-chibi-anime-character-animal-for-you.png"} 
                     name={"Nugroho Nurwanda Zakaria"} 
                     nim={21104410031}
                     jobdesk={"Data Entry"} 
@@ -40,9 +40,9 @@ export default function OurTeamView(){
                     gitHub={"http://"}
                 />
                 <CardTeamMember 
-                    image={"https://pbs.twimg.com/media/FzMtX-7WcAIeOoG?format=jpg&name=4096x4096"} 
-                    name={"Dimas"} 
-                    nim={6666666666}
+                    image={"https://i.pinimg.com/736x/3d/52/36/3d5236db036273a962982f8a29dfd6e1.jpg"} 
+                    name={"Dimas Adi Pratama"} 
+                    nim={21104410029}
                     jobdesk={"Support"} 
                     linkedIn={"http://"} 
                     gitHub={"http://"}
